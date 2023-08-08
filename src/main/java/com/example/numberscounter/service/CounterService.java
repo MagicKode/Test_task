@@ -1,9 +1,10 @@
 package com.example.numberscounter.service;
 
 import com.example.numberscounter.model.dto.CounterDto;
+import com.example.numberscounter.model.entity.Counter;
 
 public interface CounterService {
     CounterDto create(CounterDto counterDto);
-    Integer getCount(String id);
+    Counter getCount(String id);
     Integer incrementCount(CounterDto counterDto);
 }

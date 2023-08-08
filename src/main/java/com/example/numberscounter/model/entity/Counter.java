@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "counter")
+@Table(name = "numbers_counter")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,10 +20,10 @@ import javax.persistence.Table;
 @Entity
 public class Counter {
     @Id
-    @Column(name = "counterId")
+    @Column(name = "counter_id")
     private String counterId;
     @Column(name = "increment_value")
-    private Integer increment_value;
+    private Integer incrementValue;
     @Column(name = "result")
     private Integer result;
 }

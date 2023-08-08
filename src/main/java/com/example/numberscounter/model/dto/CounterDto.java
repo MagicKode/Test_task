@@ -11,6 +11,6 @@ import lombok.Setter;
 @Setter
 public class CounterDto {
     private String counterId;
-    private Integer value;
+    private Integer incrementValue;
     private Integer result;
 }

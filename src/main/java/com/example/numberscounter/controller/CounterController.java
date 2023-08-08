@@ -1,6 +1,7 @@
 package com.example.numberscounter.controller;
 
 import com.example.numberscounter.model.dto.CounterDto;
+import com.example.numberscounter.model.entity.Counter;
 import com.example.numberscounter.service.CounterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path ="count")
+@RequestMapping(path ="/counter")
 public class CounterController {
 
     private final CounterService counterService;
@@ -25,7 +26,7 @@ public class CounterController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Integer> get(@PathVariable String id){
+    public ResponseEntity<Counter> get(@PathVariable String id){
         return new ResponseEntity<>(counterService.getCount(id), HttpStatus.OK);
     }
 
