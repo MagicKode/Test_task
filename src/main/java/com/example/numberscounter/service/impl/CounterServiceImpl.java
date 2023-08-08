@@ -25,7 +25,7 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public Counter getCount(String id) {
-        return counterRepository.getReferenceById(id);
+        return counterRepository.findById(id).orElseThrow();
     }
 
     @Override

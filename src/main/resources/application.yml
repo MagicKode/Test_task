@@ -14,5 +14,5 @@ spring:
     open-in-view: false
     generate-ddl: off
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     database: mysql
