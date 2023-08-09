@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path ="/counter")
+@RequestMapping(path ="/counters")
 public class CounterController {
 
     private final CounterService counterService;
