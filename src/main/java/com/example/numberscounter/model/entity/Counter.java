@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,10 +22,10 @@ import javax.persistence.Table;
 @Entity
 public class Counter {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "counter_id")
     private String counterId;
-    @Column(name = "increment_value")
-    private Integer incrementValue;
     @Column(name = "result")
-    private Integer result;
+    private Integer result = 0;
 }

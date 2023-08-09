@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path ="/counters")
@@ -21,7 +23,7 @@ public class CounterController {
     private final CounterService counterService;
 
     @PostMapping
-    public ResponseEntity<CounterDto> create(@RequestBody CounterDto counterDto) {
+    public ResponseEntity<CounterDto> create(@RequestBody @Valid CounterDto counterDto) {
         return new ResponseEntity<>(counterService.create(counterDto), HttpStatus.CREATED);
     }
 
@@ -31,7 +33,7 @@ public class CounterController {
     }
 
     @PostMapping(path = "/increment")
-    public ResponseEntity<Integer> incrementCount(@RequestBody CounterDto counterDto) {
+    public ResponseEntity<Integer> incrementCount(@RequestBody @Valid CounterDto counterDto) {
         return new ResponseEntity<>(counterService.incrementCount(counterDto), HttpStatus.OK);
     }
 }

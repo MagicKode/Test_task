@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -25,19 +27,20 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public Counter getCount(String id) {
-        return counterRepository.findById(id).orElseThrow();
+        return counterRepository.findCounterByCounterId(id).orElseThrow(NoSuchElementException::new);
     }
 
     @Override
     @Transactional
     public Integer incrementCount(CounterDto counterDto) {
-        Integer increment = increment(counterDto);
-        counterDto.setResult(increment);
-        counterRepository.save(counterMapper.toCounter(counterDto));
-        return increment;
+        Counter counter = increment(counterDto);
+        counterRepository.save(counter);
+        return counter.getResult();
     }
 
-    private Integer increment(CounterDto counterDto) {
-         return Integer.valueOf(counterDto.getCounterId() + counterDto.getIncrementValue());
+    private Counter increment(CounterDto counterDto) {
+        Counter count = getCount(counterDto.getCounterId());
+        count.setResult(count.getResult() + counterDto.getIncrementValue());
+        return count;
     }
 }

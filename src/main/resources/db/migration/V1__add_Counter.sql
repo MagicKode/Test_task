@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS numbers_counter
 (
-    counter_id        VARCHAR(10) PRIMARY KEY,
-    increment_value  BIGINT NOT NULL,
+    id               BIGINT AUTO_INCREMENT PRIMARY KEY,
+    counter_id       VARCHAR(10) UNIQUE,
     result           BIGINT NOT NULL
 );

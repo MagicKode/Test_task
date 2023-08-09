@@ -31,8 +31,7 @@ dependencies {
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.mapstruct:mapstruct:1.5.1.Final'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.10'
-    implementation 'org.flywaydb:flyway-core:8.4.4'
-    implementation 'org.flywaydb:flyway-mysql:8.4.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     runtimeOnly 'mysql:mysql-connector-java'
 

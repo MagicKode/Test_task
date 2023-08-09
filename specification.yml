@@ -1,0 +1,95 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://127.0.0.1:8080
+    description: Generated server url
+paths:
+  /counters:
+    post:
+      tags:
+        - counter-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CounterDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CounterDto'
+  /counters/increment:
+    post:
+      tags:
+        - counter-controller
+      operationId: incrementCount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CounterDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: integer
+                format: int32
+  /counters/{id}:
+    get:
+      tags:
+        - counter-controller
+      operationId: get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Counter'
+components:
+  schemas:
+    CounterDto:
+      required:
+        - counterId
+      type: object
+      properties:
+        counterId:
+          maxLength: 10
+          minLength: 0
+          type: string
+        incrementValue:
+          minimum: 1
+          type: integer
+          format: int32
+        result:
+          type: integer
+          format: int32
+    Counter:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        counterId:
+          type: string
+        incrementValue:
+          type: integer
+          format: int32
+        result:
+          type: integer
+          format: int32
