@@ -12,13 +12,13 @@ import java.util.NoSuchElementException;
 public class ApplicationExceptionHandler {
 
     @ExceptionHandler(value = {NoSuchElementException.class})
-    public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException exception) {
+    public ResponseEntity<String> handleNoSuchElementException() {
         String message = "No counter with such id";
         return ResponseEntity.status(404).body(message);
     }
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
-    public ResponseEntity<String> handleValidationError(MethodArgumentNotValidException exception) {
+    public ResponseEntity<String> handleValidationError() {
         String message = "Check input fields";
         return ResponseEntity.status(400).body(message);
     }
